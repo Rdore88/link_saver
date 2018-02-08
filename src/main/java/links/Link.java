@@ -1,7 +1,16 @@
 package links;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+
 import javax.persistence.*;
 
+import java.util.Date;
+
+import static javax.persistence.TemporalType.TIMESTAMP;
+
+@EntityListeners(AuditingEntityListener.class)
 @Entity
 public class Link {
 
@@ -14,6 +23,18 @@ public class Link {
 
     @Lob
     private String comment;
+
+    @CreatedDate
+    @Temporal(TIMESTAMP)
+    protected Date creationDate;
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
 
     public String getUrl() {
         return url;
