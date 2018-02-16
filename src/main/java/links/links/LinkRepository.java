@@ -1,4 +1,4 @@
-package links;
+package links.links;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
