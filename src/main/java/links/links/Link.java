@@ -1,5 +1,6 @@
 package links.links;
 
+import links.categories.Category;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
@@ -20,6 +21,8 @@ public class Link {
 
     private String url;
     private String title;
+    @ManyToOne
+    private Category category;
 
     @Lob
     private String comment;
@@ -27,6 +30,14 @@ public class Link {
     @CreatedDate
     @Temporal(TIMESTAMP)
     protected Date creationDate;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     public Date getCreationDate() {
         return creationDate;
